@@ -7,7 +7,7 @@
   <title>Shivansh Dubey — ML Engineer & Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&family=Fira+Code:wght@300..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -106,154 +106,192 @@
   <!-- ===== ABOUT ===== -->
   <section id="about" class="section about">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-left">
-          <p class="section-label reveal">About</p>
-          <h2 class="section-title reveal">An ML engineer who treats every dataset like new territory.</h2>
-          <p class="about-body reveal">I'm Shivansh — I build models that learn, systems that scale, and interfaces that feel alive. My toolkit spans the full journey from raw data wrangling to deployed inference pipelines.</p>
-          <p class="about-body reveal">Whether it's crafting a fine-tuned language model, engineering a recommendation system, or building a snappy web frontend — I aim to ship things that are both smart and beautiful. Currently leveling up in deep learning and MLOps.</p>
+      <div class="pokedex-shell reveal">
+        <!-- TOP: Sensor + Logo -->
+        <div class="pokedex-top">
+          <div class="pokedex-sensor"></div>
+          <p class="pokedex-label">POKÉDEX OF ANOMALIES</p>
+          <div class="pokedex-pokeball"></div>
         </div>
-        <div class="about-right reveal">
-          <div class="about-numbers">
-            <div class="about-num-item">
-              <span class="about-num">50+</span>
-              <span class="about-num-label">Models Trained</span>
+
+        <div class="pokedex-main-row">
+          <!-- LEFT: Main Screen & Technical Stats -->
+          <div class="pokedex-col-visual">
+            <div class="pokedex-screen-main">
+              <img src="newhero.png" alt="Anomalous Entity" class="pokedex-sprite" />
             </div>
-            <div class="about-num-item">
-              <span class="about-num">20+</span>
-              <span class="about-num-label">Projects Shipped</span>
+            <div class="pokedex-data-tags">
+              <div class="pokedex-tag">NAME: SHIVANSH</div>
+              <div class="pokedex-tag">TYPE: ML / DEV</div>
             </div>
-            <div class="about-num-item">
-              <span class="about-num">∞</span>
-              <span class="about-num-label">Epochs Remaining</span>
+            <div class="pokedex-stats">
+              <div class="p-stat"><span>MODELS</span> <div class="p-bar"><div style="width: 85%"></div></div></div>
+              <div class="p-stat"><span>SHIPPED</span> <div class="p-bar"><div style="width: 70%"></div></div></div>
+              <div class="p-stat"><span>EPOCHS</span> <div class="p-bar"><div style="width: 100%"></div></div></div>
             </div>
           </div>
-          <div class="about-stack">
-            <span>Data Engineering</span>
-            <span>Deep Learning</span>
-            <span>MLOps</span>
-            <span>NLP</span>
-            <span>Computer Vision</span>
-            <span>Web Dev</span>
+
+          <!-- RIGHT: Controls & Bio LCD -->
+          <div class="pokedex-col-info">
+            <div class="pokedex-controls">
+              <!-- D-PAD -->
+              <div class="pokedex-dpad">
+                <div class="d-up"></div><div class="d-right"></div><div class="d-down"></div><div class="d-left"></div>
+                <div class="d-center"></div>
+              </div>
+              <!-- BUTTONS -->
+              <div class="pokedex-btns">
+                <button class="p-btn red">X</button>
+                <button class="p-btn blue">✓</button>
+              </div>
+            </div>
+
+            <!-- Bio LCD -->
+            <div class="pokedex-screen-lcd">
+              <div class="lcd-header">DESCRIPTION:</div>
+              <div class="lcd-body">
+                I build models that learn, systems that scale, and interfaces that feel alive. 
+                My toolkit spans raw data wrangling to MLOps pipelines.
+                Currently leveling up in Deep Learning and high-performance inference.
+              </div>
+            </div>
+
+            <div class="pokedex-stack">
+              <span>PyTorch</span><span>Docker</span><span>React</span><span>AWS</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
   </section>
 
-  <!-- ===== PROJECTS ===== -->
   <section id="projects" class="section projects">
     <div class="container">
       <p class="section-label reveal">Projects</p>
-      <h2 class="section-title reveal">Selected work</h2>
+      <h2 class="section-title reveal">Captured Models</h2>
+      <p class="section-subtext reveal">A collection of systems trained, deployed, and battle-tested in real-world scenarios.</p>
 
       <div class="projects-grid">
 
-        <article class="project-card reveal" id="project-sentinelml">
-          <div class="project-card-top">
-            <span class="project-num">001</span>
-            <div class="project-tags">
-              <span class="tag">ML</span>
-              <span class="tag">PyTorch</span>
-              <span class="tag">LSTM</span>
-            </div>
+        <!-- 001: Walia Taxi -->
+        <article class="project-card reveal" id="project-walia-taxi">
+          <div class="project-card-header">
+            <span class="project-index">No. 001</span>
+            <span class="status-badge status-deployed">Deployed</span>
           </div>
-          <h3 class="project-title">SentinelML</h3>
-          <p class="project-desc">End-to-end anomaly detection pipeline for time-series data using LSTM autoencoders with real-time alerting.</p>
-          <a href="#" class="project-link" aria-label="View SentinelML project">
-            View project
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <div class="project-content">
+            <div class="project-type-tags">
+              <span class="type-tag">WEB</span>
+              <span class="type-tag">MOBILE</span>
+            </div>
+            <h3 class="project-title">Walia Taxi</h3>
+            <p class="project-desc">Full-stack taxi booking platform enabling users to schedule rides, view availability, and manage bookings in real-time.</p>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="project-link">Inspect Model →</a>
+          </div>
         </article>
 
-        <article class="project-card reveal" id="project-datapokedex">
-          <div class="project-card-top">
-            <span class="project-num">002</span>
-            <div class="project-tags">
-              <span class="tag">Dashboard</span>
-              <span class="tag">Python</span>
-              <span class="tag">Pandas</span>
-            </div>
+        <!-- 002: ShakeGPT -->
+        <article class="project-card reveal" id="project-shakegpt">
+          <div class="project-card-header">
+            <span class="project-index">No. 002</span>
+            <span class="status-badge status-trained">Trained</span>
           </div>
-          <h3 class="project-title">DataPokédex</h3>
-          <p class="project-desc">Interactive EDA dashboard that auto-profiles any CSV dataset — distributions, correlations, outliers, all in one view.</p>
-          <a href="#" class="project-link" aria-label="View DataPokédex project">
-            View project
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <div class="project-content">
+            <div class="project-type-tags">
+              <span class="type-tag">AI</span>
+              <span class="type-tag">NLP</span>
+            </div>
+            <h3 class="project-title">ShakeGPT</h3>
+            <p class="project-desc">AI-powered text generation app that produces Shakespearean-style poetry using prompt-based inputs and fine-tuned modeling.</p>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="project-link">Inspect Model →</a>
+          </div>
         </article>
 
-        <article class="project-card reveal" id="project-typemaster">
-          <div class="project-card-top">
-            <span class="project-num">003</span>
-            <div class="project-tags">
-              <span class="tag">NLP</span>
-              <span class="tag">BERT</span>
-              <span class="tag">Transformers</span>
-            </div>
+        <!-- 003: SurviveIt -->
+        <article class="project-card reveal" id="project-surviveit">
+          <div class="project-card-header">
+            <span class="project-index">No. 003</span>
+            <span class="status-badge status-experimental">Experimental</span>
           </div>
-          <h3 class="project-title">TypeMaster NLP</h3>
-          <p class="project-desc">Fine-tuned BERT classifier for multi-label text categorization with 94% F1 on benchmark datasets.</p>
-          <a href="#" class="project-link" aria-label="View TypeMaster NLP project">
-            View project
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <div class="project-content">
+            <div class="project-type-tags">
+              <span class="type-tag">GAME</span>
+              <span class="type-tag">WEB</span>
+            </div>
+            <h3 class="project-title">SurviveIt</h3>
+            <p class="project-desc">Interactive browser survival game featuring dynamic environments and an integrated chatbot guide for real-time decision making.</p>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="project-link">Inspect Model →</a>
+          </div>
         </article>
 
-        <article class="project-card reveal" id="project-xptracker">
-          <div class="project-card-top">
-            <span class="project-num">004</span>
-            <div class="project-tags">
-              <span class="tag">Web</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">UI</span>
-            </div>
+        <!-- 004: Power Outage Detector -->
+        <article class="project-card reveal" id="project-power-outage">
+          <div class="project-card-header">
+            <span class="project-index">No. 004</span>
+            <span class="status-badge status-trained">Trained</span>
           </div>
-          <h3 class="project-title">XP Tracker</h3>
-          <p class="project-desc">Gamified habit and skill tracking web app — log your daily training, gain XP, and climb the leaderboard.</p>
-          <a href="#" class="project-link" aria-label="View XP Tracker project">
-            View project
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <div class="project-content">
+            <div class="project-type-tags">
+              <span class="type-tag">ML</span>
+              <span class="type-tag">DATA</span>
+            </div>
+            <h3 class="project-title">Power Outage Detector</h3>
+            <p class="project-desc">ML model that predicts and detects power outages in Delhi using historical grid data for reliability monitoring.</p>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="project-link">Inspect Model →</a>
+          </div>
         </article>
 
-        <article class="project-card reveal" id="project-hypertuner">
-          <div class="project-card-top">
-            <span class="project-num">005</span>
-            <div class="project-tags">
-              <span class="tag">MLOps</span>
-              <span class="tag">Optuna</span>
-              <span class="tag">MLflow</span>
-            </div>
+        <!-- 005: Solar Efficiency Detector -->
+        <article class="project-card reveal" id="project-solar-efficiency">
+          <div class="project-card-header">
+            <span class="project-index">No. 005</span>
+            <span class="status-badge status-trained">Trained</span>
           </div>
-          <h3 class="project-title">HyperTuner</h3>
-          <p class="project-desc">Automated hyperparameter optimization engine using Bayesian search with experiment tracking via MLflow.</p>
-          <a href="#" class="project-link" aria-label="View HyperTuner project">
-            View project
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <div class="project-content">
+            <div class="project-type-tags">
+              <span class="type-tag">ML</span>
+              <span class="type-tag">DATA</span>
+            </div>
+            <h3 class="project-title">Solar Efficiency Detector</h3>
+            <p class="project-desc">Predictive system evaluating solar panel efficiency based on environmental data to identify optimization opportunities.</p>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="project-link">Inspect Model →</a>
+          </div>
         </article>
 
-        <article class="project-card reveal" id="project-visionquest">
-          <div class="project-card-top">
-            <span class="project-num">006</span>
-            <div class="project-tags">
-              <span class="tag">CV</span>
-              <span class="tag">YOLO</span>
-              <span class="tag">React</span>
-            </div>
+        <!-- 006: DataPokédex -->
+        <article class="project-card reveal" id="project-datapokedex-real">
+          <div class="project-card-header">
+            <span class="project-index">No. 006</span>
+            <span class="status-badge status-deployed">Deployed</span>
           </div>
-          <h3 class="project-title">VisionQuest</h3>
-          <p class="project-desc">Real-time object detection app using YOLOv8 with a clean React frontend and FastAPI inference backend.</p>
-          <a href="#" class="project-link" aria-label="View VisionQuest project">
-            View project
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <div class="project-content">
+            <div class="project-type-tags">
+              <span class="type-tag">DATA</span>
+              <span class="type-tag">VIS</span>
+            </div>
+            <h3 class="project-title">DataPokédex</h3>
+            <p class="project-desc">Interactive data tool that profiles datasets instantly, revealing distributions and anomalies through an intuitive dashboard.</p>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="project-link">Inspect Model →</a>
+          </div>
         </article>
 
       </div>
     </div>
   </section>
+
 
   <!-- ===== JOURNEY ===== -->
   <section id="journey" class="section journey">
