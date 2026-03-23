@@ -94,3 +94,61 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ── Hero Reveal Scroll Animation (Pokemon Style: Blastoise) ────────────────
+const hero         = document.getElementById('hero');
+const heroImg      = hero.querySelector('.hero-img');
+const heroPuddle   = hero.querySelector('.hero-puddle');
+
+if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+  // Trigger splash on load
+  setTimeout(() => heroImg.classList.add('is-active'), 400);
+
+  let tick = false;
+
+  const updateHeroReveal = () => {
+    const scrollY = window.scrollY;
+    // Animate over the first 60% of viewport
+    const height   = window.innerHeight * 0.6; 
+    const progress = Math.max(0, Math.min(scrollY / height, 1));
+
+    // "Retreat / Dive" Effect:
+    // Image: Scale Down (1 -> 0.7), Opacity (1 -> 0), Blur (0 -> 8px), Move Down
+    const scale = (1 - (progress * 0.3)).toFixed(3);
+    const op    = (1 - progress).toFixed(3);
+    const y     = (progress * 120).toFixed(2);
+    const blur  = (progress * 8).toFixed(1);
+    
+    // Puddle: Scale Up (1 -> 2) as character sinks
+    const puddleScale = (1 + progress).toFixed(2);
+
+    heroImg.style.opacity   = op;
+    heroImg.style.transform = `scale(${scale}) translateY(${y}px)`;
+    heroImg.style.filter    = `drop-shadow(0 16px 32px rgba(0,0,0,0.12)) blur(${blur}px)`;
+    
+    // Simulate sinking into the water base
+    const sinkPercent = (progress * 100).toFixed(1);
+    heroImg.style.clipPath = `inset(0 0 ${sinkPercent}% 0)`;
+
+    if (heroPuddle) {
+      heroPuddle.style.transform = `translateX(-50%) scaleX(${2 * puddleScale}) scaleY(${0.4 * puddleScale})`;
+      heroPuddle.style.opacity   = (0.4 * (1 - progress)).toFixed(2);
+    }
+
+    tick = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!tick) {
+      requestAnimationFrame(updateHeroReveal);
+      tick = true;
+    }
+  }, { passive: true });
+
+  // Initial call (only after splash animation has a chance to start)
+  setTimeout(updateHeroReveal, 100);
+}
+
+
+
+

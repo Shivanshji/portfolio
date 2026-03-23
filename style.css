@@ -166,12 +166,31 @@ ul { list-style: none; }
   padding-top: var(--nav-h); position: relative; overflow: hidden;
   background: var(--bg);
 }
+
 .hero-inner {
-  flex: 1; width: 100%; max-width: var(--max-w); margin: 0 auto;
+
+
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
   padding: 60px 40px 40px;
-  display: flex; align-items: center; gap: 80px;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  position: relative;
+  /* Ensure content is above the overlay reveal if needed */
+  z-index: 5; 
 }
-.hero-text { flex: 1; min-width: 0; }
+
+.hero-text { 
+  flex: 1; 
+  min-width: 0; 
+  position: relative;
+  z-index: 10;
+}
+
+
 .hero-eyebrow {
   font-size: 0.78rem; font-weight: 600;
   letter-spacing: 0.2em; text-transform: uppercase;
@@ -197,19 +216,125 @@ ul { list-style: none; }
 .hero-image-wrap {
   flex: 0 0 auto; width: clamp(280px, 36vw, 480px);
   display: flex; align-items: center; justify-content: center;
+  position: relative;
+  /* Organic blob-like mask to ensure it's not squarish */
+  -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 98%);
+  mask-image: radial-gradient(circle at center, black 45%, transparent 98%);
 }
-.hero-img { width: 100%; height: auto; object-fit: contain; filter: drop-shadow(0 16px 32px rgba(0,0,0,0.12)); }
 
-/* Hero entrance animations */
-.reveal-hero {
-  opacity: 0; transform: translateY(28px);
-  animation: heroIn 0.8s cubic-bezier(0.4,0,0.2,1) 0.1s forwards;
+.hero-puddle {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%) scaleX(2) scaleY(0.4);
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }
-.reveal-hero-img {
-  opacity: 0; transform: translateY(20px);
-  animation: heroIn 0.9s cubic-bezier(0.4,0,0.2,1) 0.35s forwards;
+.hero-img.is-active ~ .hero-puddle {
+  opacity: 1;
+  animation: puddleIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
-@keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
+
+@keyframes puddleIn {
+  0% { transform: translateX(-50%) scale(0); opacity: 0; }
+  100% { transform: translateX(-50%) scaleX(2) scaleY(0.4); opacity: 1; }
+}
+
+.hero-ripple {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 240px; height: 240px;
+  fill: none;
+  stroke: #60A5FA;
+  stroke-width: 2;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-img.is-active ~ .hero-ripple {
+  animation: rippleOut 1s cubic-bezier(0, 0.4, 0.3, 1) forwards;
+}
+
+@keyframes rippleOut {
+  0% { transform: translate(-50%, -50%) scale(0.2); opacity: 1; stroke-width: 4; }
+  100% { transform: translate(-50%, -50%) scale(2); opacity: 0; stroke-width: 0.5; }
+}
+
+
+
+/* Splash Zone */
+.hero-splash-zone {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px; height: 100px;
+  pointer-events: none;
+  z-index: 1;
+}
+.p-drop {
+  position: absolute;
+  width: 12px; height: 12px;
+  background: #60A5FA;
+  border-radius: 50%;
+  opacity: 0;
+}
+.hero-img.is-active ~ .hero-splash-zone .p-drop {
+  animation: dropBurst 0.8s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
+
+/* Particle offsets */
+.p-drop:nth-child(1) { --tx: -60px; --ty: -40px; }
+.p-drop:nth-child(2) { --tx: 60px;  --ty: -40px; animation-delay: 0.05s; }
+.p-drop:nth-child(3) { --tx: -80px; --ty: 20px;  animation-delay: 0.1s; }
+.p-drop:nth-child(4) { --tx: 80px;  --ty: 20px;  animation-delay: 0.15s; }
+.p-drop:nth-child(5) { --tx: -30px; --ty: 60px;  animation-delay: 0.2s; }
+.p-drop:nth-child(7) { --tx: -40px; --ty: -70px; animation-delay: 0.1s; }
+.p-drop:nth-child(8) { --tx: 40px;  --ty: -70px; animation-delay: 0.2s; }
+
+@keyframes dropBurst {
+  0% { transform: translate(0, 0) scale(0); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(1.6); opacity: 0; }
+}
+
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  filter: drop-shadow(0 16px 32px rgba(0,0,0,0.12));
+  opacity: 0;
+  transform: scale(0.6) translateY(40px);
+  will-change: transform, opacity, filter;
+  z-index: 2;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Soft organic shape */
+}
+
+
+.hero-img.is-active {
+  animation: splashIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes splashIn {
+  0%   { opacity: 0; transform: scale(0.4) translateY(80px) rotate(-10deg); }
+  50%  { transform: scale(1.15) translateY(-20px) rotate(4deg); }
+  65%  { transform: scale(0.95) translateY(5px) rotate(-2deg); }
+  80%  { transform: scale(1.05) translateY(-3px) rotate(1deg); }
+  100% { opacity: 1; transform: scale(1) translateY(0) rotate(0); }
+}
+
+
+
+
+
+/* Hero Reveal Overlay - DELETED */
+
+
 
 /* Marquee */
 .marquee-track {
